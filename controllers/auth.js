@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const Category = require('../models/Category');
 const Job = require('../models/Job');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
 const { OAuth2Client } = require('google-auth-library');
@@ -52,8 +52,8 @@ exports.register = async (req, res) => {
     const user = new User({ ...req.body, user_type: 'local' });
 
     // hash password and save user
-    bcrypt.genSalt(12, function (err, salt) {
-      bcrypt.hash(user.password, salt, (err, hash) => {
+    bcryptjs.genSalt(12, function (err, salt) {
+      bcryptjs.hash(user.password, salt, (err, hash) => {
         user.password = hash;
         user.save();
 
@@ -95,7 +95,7 @@ exports.login = async (req, res) => {
     if (!user) return res.status(400).send('User does not exist');
 
     //match password
-    bcrypt.compare(password, user.password, function (err, match) {
+    bcryptjs.compare(password, user.password, function (err, match) {
       if (!match || err) {
         return res.status(400).send('Password is incorrect');
       }
