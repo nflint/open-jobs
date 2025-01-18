@@ -1,8 +1,4 @@
 
-
-Here's the complete README.md content that you can copy and paste directly:
-
-```markdown:README.md
 ## About Todo Jobs
 
 Todojobs is a web application that allows to you record and keep track of your job applications. You can now ditch excel and use use todojobs which is easier and faster to use. Categorize and seamlessly manage your job applications.
@@ -93,4 +89,4 @@ If you encounter any issues during setup:
 1. Make sure MongoDB is running if using local instance
 2. Check that ports 3000 and 8000 are available
 3. If you get module not found errors, try deleting node_modules and package-lock.json and run npm install again
-```
+
